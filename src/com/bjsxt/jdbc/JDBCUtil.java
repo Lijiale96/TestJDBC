@@ -31,13 +31,19 @@ public class JDBCUtil {
 
 public static void close(ResultSet rs,Statement ps,Connection conn){
     try {
+        if (rs != null) {
+            rs.close();
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    try {
         if (ps != null) {
             ps.close();
         }
     } catch (SQLException e) {
         e.printStackTrace();
     }
-
     try {
         if (conn != null) {
             try {
